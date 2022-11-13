@@ -1,0 +1,127 @@
+/* Global */
+* {
+    color: #ffffff;  
+    font-family: 'Bebas Neue', cursive;
+  }
+  
+  header {
+    background-color: rgb(99, 99, 239);
+  }
+  
+  /* Timer */
+  #time-modal,
+  #win-modal {
+      width:300px;
+      height: 200px;
+      border: 1px solid rgb(99, 99, 239);
+      background-color:white;
+      font-family:Arial, Helvetica, sans-serif;
+      box-sizing: border-box;
+      text-align:center;
+      padding: 40px 0;
+      position:absolute;
+      z-index:20;
+      top:40%;
+      left:50%;
+      transform: translate(-50%, -50%);
+      display:none;
+      border-radius:10px;
+  }
+  
+  .modal-close,
+  .win-modal-close {
+      position:absolute;
+      top:10px;
+      right:10px;
+      font-weight:bold;
+  }
+  
+  /* High Scores */
+  #highscore-modal {
+    width:300px;
+    height: 400px;
+    border: 1px solid rgb(99, 99, 239);
+    font-family:Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    text-align:center;
+    padding: 40px 0;
+    position:absolute;
+    z-index:20;
+    top:40%;
+    right:55%;
+    transform: translate(-50%, -50%);
+    display:none;
+    border-radius:10px;
+  }
+  
+  .score-modal-close,
+  .help-modal-close {
+    position:absolute;
+    top:10px;
+    right:10px;
+    font-weight:bold;
+  }
+  
+  #highscore,
+  #help,
+  #src-btn,
+  #play-again-btn,
+  #win-play-again {
+    background-color: rgb(99, 99, 239);
+    font: white;
+    border:none;
+    outline:none;
+    font-family: 'Bebas Neue', cursive;
+  }
+  
+  button#highscore:hover {
+    color: grey;
+    cursor:pointer;
+  }
+  
+  .win-modal-close:hover {
+    cursor:pointer;
+  }
+  
+  button#start-btn:hover {
+    cursor:pointer;
+  }
+  
+  button#play-again-btn:hover {
+    color:grey;
+    cursor:pointer;
+  }
+  
+  button#win-play-again:hover {
+    color:grey;
+    cursor:pointer;
+  }
+  
+  .score-modal-close:hover {
+    cursor:pointer;
+  }
+  
+  #start-btn {
+    padding-top:1%;
+    text-align:right;
+    font-size:larger;
+    background-color: rgb(99, 99, 239);
+    font: white;
+    border:none;
+    outline:none;
+    font-family: 'Bebas Neue', cursive;
+  }
+  
+  #scores-count {
+    font:black;
+    font-size: large;
+  }
+  
+  #question-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 100px 250px;
+    text-align: center;
+}
