@@ -1,6 +1,5 @@
 /* Global */
 * {
-    color: #ffffff;  
     font-family: 'Bebas Neue', cursive;
   }
   
@@ -102,14 +101,15 @@
   }
   
   #start-btn {
-    padding-top:1%;
-    text-align:right;
+    padding: 3px;
+    text-align:center;
     font-size:larger;
     background-color: rgb(99, 99, 239);
     font: white;
     border:none;
     outline:none;
     font-family: 'Bebas Neue', cursive;
+    
   }
   
   #scores-count {
@@ -118,10 +118,20 @@
   }
   
   #question-container {
-    display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
-    margin: 100px 250px;
+    margin: 100px 100px;
     text-align: center;
+}
+
+#answer-box {
+    display:grid;
+    grid-template-columns: repeat(2, auto);
+    gap:10px;
+    margin: 20px 0;
+}
+
+#question-display {
+    font:black;
 }

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
@@ -17,26 +16,45 @@
     <header>
         <h1 class="has-text-centered is-size-1">Code Quiz</h1>
         <button id="highscore" class="has-text-left-desktop">High Scores</button>
+        <p id="timer" class="has-text-right-desktop"></p>
     </header>
 
-        <div id="win-modal" class="has-text-centered is-size-3">
+        <!-- <div id="win-modal" class="has-text-centered is-size-3">
             <p>Congratulations! You won the game :-)</p>
             <button id="win-play-again" class="is-size-7 is-centered">PLAY AGAIN</button>
-        </div>
-
+        </div> -->
+    
+    <div id="container">
         <div id="question-container">
-            <button id="start-btn" class="has-text-centered-desktop is-justify-content-center">START QUIZ</button>
-            <div id="highscore-modal" class="has-text-centered is-size-3">
-                <p>High Scores</p>
-                <ul id="high-scores-list"></ul>
+            <div id="question-display">Question</div>
+            <div id="answer-box">
+                <button class="answer-btn">Answer 1</button>
+                <button class="answer-btn">Answer 2</button>
+                <button class="answer-btn">Answer 3</button>
+                <button class="answer-btn">Answer 4</button>
             </div>
-        <p id="timer" class="has-text-right-desktop"></p>
-            <div id="time-modal">
-                <h2 class="is-size 2">GAME OVER</h2>
-                <button id="play-again-btn" class="is-size-7 is-centered">PLAY AGAIN</button>
-            </div>
+        </div>
+        <div class="has-text-centered">
+            <button id="start-btn"> START QUIZ</button>
         </div>
     </div>
+           
+        <!-- <div id="highscore-modal" class="has-text-centered is-size-3">
+            <p>High Scores</p>
+            <ul id="high-scores-list"></ul>
+        </div>     -->
+
+            <div id="time-modal">
+                <h2 class="is-size 2">GAME OVER</h2>
+                <form>
+                    <input type="text" id="name" name="name" placeholder="Your name">
+                    <label for="name">Enter name</label>
+                    <button class="btn" id="submitBtn">Submit</button>
+                </form>
+                <button id="play-again-btn" class="is-size-7 is-centered">PLAY AGAIN</button>
+            </div>
+
+        </div>
 
         <script src="./assets/js/script.js"></script>
 </body>
