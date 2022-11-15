@@ -4,6 +4,7 @@ var questionContainer = document.querySelector('.question-container')
 var scoreModalEl = document.getElementById("highscore-modal");
 var scoreCloseEl = document.querySelector(".score-modal-close");
 var scoreButtonEl = document.getElementById("highscore");
+var highscoresListEl = document.querySelector("#high-scores-list");
 
 var timeEl = document.querySelector("#timer");
 var gameOverModal = document.getElementById("time-modal")
@@ -25,6 +26,11 @@ var answersEl = document.querySelector("answers-display");
 var answerButtons = document.getElementsByClassName("answer-btn")
 var questionDisplayEl = document.querySelector("#question-display");
 var answerBoxEl = document.querySelector("#answer-box");
+let submitScore = document.querySelector("#submit-btn");
+
+let initialsEl = document.querySelector("#initials");
+
+var highscoresList = []; 
 
 var questionList = [
     {
@@ -74,11 +80,6 @@ var questionList = [
     }
 ]
 
-// function selectQuestion() {
-//     resetButtons();
-//     displayQuestion(shuffledQuestions[currentQuestionIndex]);
-// }
-
 function displayQuestion(i) {
     console.log(i);
     if (i >= 5) {
@@ -89,12 +90,9 @@ function displayQuestion(i) {
     let j=0;
     questionList[i].answers.forEach(answer => {
         let button = answerButtons[j];
-        button.style.color = "rgb(99, 99, 239)";
+        button.style.color = "white";
         button.innerText = answer.text;
         j += 1;
-        // if (answer.correct) {
-        //     button.dataset.correct = answer.correct;
-        // }
         button.addEventListener('click', () => {
             if (answer.correct) {
                 button.style.color = "green";
@@ -107,17 +105,34 @@ function displayQuestion(i) {
     })
 }
 
-// function gameOverModal() {
-
-// }
-
 function gameOver() {
     clearInterval(timer);
     questionEl.innerText = "GAME OVER";
     answerBoxEl.style.display="none";
-    // gameOverModal();
+    gameOverModal.style.display="block";
     // storeScores();
 }
+
+storedList = [];
+
+submitScore.addEventListener('click', function (event) {
+    event.preventDefault();
+    var storedList = JSON.parse(localStorage.getItem("highscores"));
+    var newScore = {
+        initials: initialsEl.value.trim(),
+        time: secondsLeft,
+    }
+    storedList.push(newScore);
+    localStorage.setItem("highscores", JSON.stringify(storedList));
+
+    for (var i=0; i < storedList.length; i++) {
+        var score = newScore[i];
+        console.log(score);
+        var li = document.createElement("li");
+        li.textContent = score;
+        highscoresListEl.appendChild(li);
+    }
+})
 
 //initializes all start game functions
 function startGame() {
@@ -143,6 +158,21 @@ function startTimer() {
         };
     }, 1000);
 }
+
+scoreButtonEl.addEventListener ('click', showScoreModal);
+
+function showScoreModal() {
+    scoreModalEl.style.display="block";
+}
+
+// Closes modal when the "x" button is clicked 
+scoreCloseEl.addEventListener('click',function() {
+    scoreModalEl.style.display="none";
+});
+
+playAgainBtnEl.addEventListener('click', function() {
+    window.location.reload();
+})
 
 //starts game
 startBtnEl.addEventListener('click', startGame)

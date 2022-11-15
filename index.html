@@ -13,20 +13,15 @@
 </head>
 <body>
 
-    <header>
+    <header class="has-text-white">
         <h1 class="has-text-centered is-size-1">Code Quiz</h1>
-        <button id="highscore" class="has-text-left-desktop">High Scores</button>
-        <p id="timer" class="has-text-right-desktop"></p>
+        <button id="highscore" class="has-text-left-desktop has-text-white">High Scores</button>
+        <p id="timer" class="has-text-centered"></p>
     </header>
-
-        <!-- <div id="win-modal" class="has-text-centered is-size-3">
-            <p>Congratulations! You won the game :-)</p>
-            <button id="win-play-again" class="is-size-7 is-centered">PLAY AGAIN</button>
-        </div> -->
     
     <div id="container">
         <div id="question-container">
-            <div id="question-display">Question</div>
+            <div id="question-display">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</div>
             <div id="answer-box">
                 <button class="answer-btn">Answer 1</button>
                 <button class="answer-btn">Answer 2</button>
@@ -35,23 +30,24 @@
             </div>
         </div>
         <div class="has-text-centered">
-            <button id="start-btn"> START QUIZ</button>
+            <button id="start-btn" class="has-text-white"> START QUIZ</button>
         </div>
     </div>
            
-        <!-- <div id="highscore-modal" class="has-text-centered is-size-3">
+        <div id="highscore-modal" class="has-text-centered is-size-3">
             <p>High Scores</p>
-            <ul id="high-scores-list"></ul>
-        </div>     -->
+            <ul id="high-scores-list">Scores:</ul>
+            <span class="score-modal-close">X</span>
+        </div>    
 
             <div id="time-modal">
-                <h2 class="is-size 2">GAME OVER</h2>
+                <h2 class="is-size-3 py-2">GAME OVER</h2>
                 <form>
-                    <input type="text" id="name" name="name" placeholder="Your name">
-                    <label for="name">Enter name</label>
-                    <button class="btn" id="submitBtn">Submit</button>
+                    <label for="initials">Enter initials:</label>
+                    <input type="text" id="initials" name="initials" placeholder="Your initials">
+                    <button class="btn" id="submit-btn">Submit score</button>
                 </form>
-                <button id="play-again-btn" class="is-size-7 is-centered">PLAY AGAIN</button>
+                <button id="play-again-btn" class="is-size-4 is-centered py-3">PLAY AGAIN</button>
             </div>
 
         </div>

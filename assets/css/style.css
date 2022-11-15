@@ -8,8 +8,7 @@
   }
   
   /* Timer */
-  #time-modal,
-  #win-modal {
+  #time-modal {
       width:300px;
       height: 200px;
       border: 1px solid rgb(99, 99, 239);
@@ -27,34 +26,14 @@
       border-radius:10px;
   }
   
-  .modal-close,
-  .win-modal-close {
+  .modal-close{
       position:absolute;
       top:10px;
       right:10px;
       font-weight:bold;
   }
   
-  /* High Scores */
-  #highscore-modal {
-    width:300px;
-    height: 400px;
-    border: 1px solid rgb(99, 99, 239);
-    font-family:Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
-    text-align:center;
-    padding: 40px 0;
-    position:absolute;
-    z-index:20;
-    top:40%;
-    right:55%;
-    transform: translate(-50%, -50%);
-    display:none;
-    border-radius:10px;
-  }
-  
-  .score-modal-close,
-  .help-modal-close {
+  .score-modal-close {
     position:absolute;
     top:10px;
     right:10px;
@@ -62,10 +41,8 @@
   }
   
   #highscore,
-  #help,
   #src-btn,
-  #play-again-btn,
-  #win-play-again {
+  #play-again-btn {
     background-color: rgb(99, 99, 239);
     font: white;
     border:none;
@@ -78,10 +55,6 @@
     cursor:pointer;
   }
   
-  .win-modal-close:hover {
-    cursor:pointer;
-  }
-  
   button#start-btn:hover {
     cursor:pointer;
   }
@@ -91,22 +64,19 @@
     cursor:pointer;
   }
   
-  button#win-play-again:hover {
-    color:grey;
-    cursor:pointer;
-  }
-  
   .score-modal-close:hover {
     cursor:pointer;
   }
   
-  #start-btn {
-    padding: 3px;
+  #start-btn,
+  .answer-btn {
+    padding: 5px 5px;
     text-align:center;
     font-size:larger;
     background-color: rgb(99, 99, 239);
     font: white;
     border:none;
+    border-radius: 10px;
     outline:none;
     font-family: 'Bebas Neue', cursive;
     
@@ -134,4 +104,28 @@
 
 #question-display {
     font:black;
+}
+
+#time-modal,
+#highscore-modal {
+    width:600px;
+    height: 200px;
+    border: 1px solid white;
+    background-color:rgb(99, 99, 239);
+    font-family:Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    text-align:center;
+    padding: 40px 0;
+    position:absolute;
+    z-index:20;
+    top:40%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    display:none;
+    border-radius:10px;
+}
+
+#highscore-modal {
+    width:800px;
+    height:380px;
 }
