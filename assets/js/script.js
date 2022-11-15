@@ -20,7 +20,6 @@ var winModalEl = document.querySelector("#win-modal")
 var timer;
 var secondsLeft;
 
-// let shuffledQuestions, currentQuestionIndex;
 var questionEl = document.querySelector("#question-display");
 var answersEl = document.querySelector("answers-display");
 var answerButtons = document.getElementsByClassName("answer-btn")
@@ -30,7 +29,7 @@ let submitScore = document.querySelector("#submit-btn");
 
 let initialsEl = document.querySelector("#initials");
 
-var highscoresList = []; 
+var storedList = [];
 
 var questionList = [
     {
@@ -113,7 +112,7 @@ function gameOver() {
     // storeScores();
 }
 
-storedList = [];
+let newScore;
 
 submitScore.addEventListener('click', function (event) {
     event.preventDefault();
@@ -124,15 +123,17 @@ submitScore.addEventListener('click', function (event) {
     }
     storedList.push(newScore);
     localStorage.setItem("highscores", JSON.stringify(storedList));
+    renderScores();
+})
 
+function renderScores() {
+    var storedList = JSON.parse(localStorage.getItem("highscores"));
     for (var i=0; i < storedList.length; i++) {
-        var score = newScore[i];
-        console.log(score);
         var li = document.createElement("li");
-        li.textContent = score;
+        li.textContent = storedList[i].initials + ": " + storedList[i].time;
         highscoresListEl.appendChild(li);
     }
-})
+}
 
 //initializes all start game functions
 function startGame() {
@@ -142,8 +143,6 @@ function startGame() {
     startTimer();
     startBtnEl.disabled = true;
     startBtnEl.style.display="none";
-    // shuffledQuestions = questionList.sort(() => Math.random() - .5);
-    // currentQuestionIndex = 0;
     displayQuestion(0);
 }
 
@@ -176,3 +175,4 @@ playAgainBtnEl.addEventListener('click', function() {
 
 //starts game
 startBtnEl.addEventListener('click', startGame)
+renderScores();
