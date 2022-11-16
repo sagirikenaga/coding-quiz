@@ -18,7 +18,7 @@ var winPlayAgainBtn = document.querySelector("#win-play-again")
 var winModalEl = document.querySelector("#win-modal")
 
 var timer;
-var secondsLeft;
+var secondsLeft = 120;
 
 var questionEl = document.querySelector("#question-display");
 var answersEl = document.querySelector("answers-display");
@@ -28,8 +28,9 @@ var answerBoxEl = document.querySelector("#answer-box");
 let submitScore = document.querySelector("#submit-btn");
 
 let initialsEl = document.querySelector("#initials");
-
-var storedList = [];
+let storedList = JSON.parse(localStorage.getItem("highscores")) || [];
+let gameIndex = 0;
+let formEl = document.querySelector("#form")
 
 var questionList = [
     {
@@ -91,17 +92,24 @@ function displayQuestion(i) {
         let button = answerButtons[j];
         button.style.color = "white";
         button.innerText = answer.text;
+        button.value = answer.correct;
+        button.onclick = checkAnswer;
         j += 1;
-        button.addEventListener('click', () => {
-            if (answer.correct) {
-                button.style.color = "green";
-                displayQuestion(i+1);
-            } else {
-                button.style.color = "red";
-                secondsLeft -= 10;
-            }
-        }, {once:true});
     })
+}
+
+function checkAnswer(event) {
+    console.log(this);
+    console.log(event.target)
+    // button.addEventListener('click', () => {
+        if (this.value === 'true') {
+            this.style.color = "green";
+            displayQuestion(gameIndex+=1);
+        } else {
+            this.style.color = "red";
+            secondsLeft -= 10;
+        }
+    // }, {once:true});
 }
 
 function gameOver() {
@@ -112,23 +120,20 @@ function gameOver() {
     // storeScores();
 }
 
-let newScore;
-
 submitScore.addEventListener('click', function (event) {
     event.preventDefault();
-    var storedList = JSON.parse(localStorage.getItem("highscores"));
     var newScore = {
         initials: initialsEl.value.trim(),
         time: secondsLeft,
     }
     storedList.push(newScore);
     localStorage.setItem("highscores", JSON.stringify(storedList));
+    formEl.style.display="none"
     renderScores();
 })
 
 function renderScores() {
-    var storedList = JSON.parse(localStorage.getItem("highscores"));
-    for (var i=0; i < storedList.length; i++) {
+    for (var i=0; i < 5; i++) {
         var li = document.createElement("li");
         li.textContent = storedList[i].initials + ": " + storedList[i].time;
         highscoresListEl.appendChild(li);
@@ -139,7 +144,6 @@ function renderScores() {
 function startGame() {
     console.log("Game started!");
     isGameOver = false; 
-    secondsLeft = 120;
     startTimer();
     startBtnEl.disabled = true;
     startBtnEl.style.display="none";
@@ -172,6 +176,7 @@ scoreCloseEl.addEventListener('click',function() {
 playAgainBtnEl.addEventListener('click', function() {
     window.location.reload();
 })
+
 
 //starts game
 startBtnEl.addEventListener('click', startGame)
