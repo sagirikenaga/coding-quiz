@@ -42,7 +42,8 @@
   
   #highscore,
   #src-btn,
-  #play-again-btn {
+  #play-again-btn,
+  #submit-btn {
     background-color: rgb(99, 99, 239);
     font: white;
     border:none;
@@ -51,6 +52,11 @@
   }
   
   button#highscore:hover {
+    color: grey;
+    cursor:pointer;
+  }
+
+  button#submit-btn:hover {
     color: grey;
     cursor:pointer;
   }
@@ -128,4 +134,5 @@
 #highscore-modal {
     width:800px;
     height:380px;
+    z-index:30;
 }

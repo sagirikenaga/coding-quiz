@@ -135,7 +135,9 @@ submitScore.addEventListener('click', function (event) {
 function renderScores() {
     for (var i=0; i < 5; i++) {
         var li = document.createElement("li");
-        li.textContent = storedList[i].initials + ": " + storedList[i].time;
+        var reverse = storedList.reverse();
+        console.log(reverse)
+        li.textContent = reverse[i].initials + ": " + reverse[i].time;
         highscoresListEl.appendChild(li);
     }
 }
